@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0" http-equiv="Content-Type"/>
+<title>Floresta v1806</title>
+<!--<link rel="icon" href="diodi/favicon.ico">-->
+<!--<link rel="stylesheet" type="text/css" href="diodi/fonts.css">-->
+<style>svg text { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
+	svg text::selection { background: none;} svg {display:block}
+	/*.element::-webkit-scrollbar { display:none; }*/
+	#fE{ position:absolute; 	top:0px; left:0px; height:100%; width:100%;}
+	#qZ{ position:absolute; 	top:0px; left:0px; height:100%; overflow: auto; background-color: #cccc88;}
+	#tB{ position:absolute; 	top:0px; 						overflow: auto; overflow-x:auto;}
+	#tB::-webkit-scrollbar{ display:none; }
+	#lI{ position:absolute; 			 left:0px; 				overflow:auto; overflow-x: auto;}
+	#lK{ position:absolute; overflow:auto; left:120px; background-color: black; top:39px; z-index:10;
+		border-bottom:1px solid #3c3c3c; border-right:1px solid #3c3c3c;
+		-webkit-border-radius: 7px;-moz-border-radius: 7px;border-radius: 7px;}
+	#sK{ position:absolute; overflow:auto; background-color: black;
+		border-bottom:1px solid #3c3c3c; border-right:1px solid #3c3c3c;
+		-webkit-border-radius: 7px;-moz-border-radius: 7px;border-radius: 7px;}
+	#lI::-webkit-scrollbar{ display:none; }
+	#sQ{ position:absolute; 									overflow:auto; }
+	/*#sC{ position:absolute; background-color:black; z-index:20; width:0px; height:1px; top:39px;}*/
+	html{height:100%;padding:0px;margin:0px;/*font-family:PF;*/font-size:13px;background-color:black;color:white;overflow:auto; overflow-x:auto;}
+	body{height:100%;padding:0px;margin:0px;background-color:transparent; overflow:auto; overflow-x:auto;}
+</style>
+<script>
+
+
+
+var gl =(function(){
+	var fe ="mood";
+	var fes =["mood"];
+
+	var pe =false; var useE =true;
+	var x =0; var y =0; var w =0; var h =0; var op =0; var fesL =0;
+	var cl =""; ns ="http://www.w3.org/2000/svg";
+	var svg =null; var ws =null; var e =null; var E =null; var bufArr1 =[]; var bufArr2 =[];
+	E =bufArr1;
+	return { pe:pe,useE:useE,x:x,y:y,w:w,h:h,op:op,fesL:fesL,fe:fe,cl:cl,ns:ns,fes:fes,svg:svg,ws:ws,e:e,E:E,bufArr1:bufArr1,bufArr2:bufArr2} }());
+
+
+
+var gr =1.618;
+
+var wi =(function(){
+	var load =false;
+	var w =0; var h =0;
+	return { load:load,w:w,h:h} }());
+
+var dc =(function(){
+	var div =null; var svg =null;
+	return { div:div,svg:svg} }());
+
+var sb =(function(){
+	var rh =25; var rhQz =41; var rty =2; var rtyQz =11; var rtx =6; var f =15;
+	return { rh:rh,rhQz:rhQz,rty:rty,rtyQz:rtyQz,rtx:rtx,f:f} }());
+
+var fe =(function(){ 
+	var r =66; var t =40; var l =0; var b =0; var w =0; var h =0; var wid =0;
+	return { r:r,t:t,l:l,b:b,w:w,h:h,wid:wid} }());
+
+var md =(function(){
+	var hasUi =true;
+	var ni ="mood"; var di ="mood";
+	return { hasUi:hasUi,ni:ni,di:di} }());
+
+switch( gl.fe){ case "mood" 	: gl.fe =md}
+
+
+
+
+function mf(n){ return Math.floor(n)}
+function mr(n){ return Math.round(n)}
+function mc(n){ return Math.ceil(n)}
+
+
+
+function predraw(){
+
+	function predrawUi(){
+		switch( fe.wid){ 	case 0 		: fe.l =mr( wi.w /2)}
+		fe.w =wi.w -fe.r -fe.l;
+		fe.h =mr( 0.75 *fe.w)
+	}
+
+	function predrawMd(){}
+
+	wi.w =window.innerWidth; 	wi.h =window.innerHeight;
+	if( gl.fe.hasUi){ predrawUi()}
+	switch( gl.fe.ni){ case "mood" 	: predrawMd()}}
+
+
+
+function initFe(){
+
+	function initUi(){
+		console.log("jou");
+		dc.svg =document.createElementNS( ns,'svg');
+		dc.svg.setAttribute( 'width',wi.w); 	dc.svg.setAttribute( 'height',wi.h);
+
+		dc.div =document.createElement( 'div');
+		dc.div.style.width =wi.w; 	dc.div.style.height =wi.h;
+
+		dc.div.appendChild( dc.svg);
+	}
+
+	if( gl.fe.hasUi){ initUi()}
+}
+
+
+
+
+
+function initDraw(){ if( wi.load && gl.ws.readyState ==1){ predraw(); initFe(); draw()}}
+function draw(){
+
+	function drawMd(){		
+		drCartesianPlane( dc.svg, fe.l, fe.t, fe.w, fe.h);
+		document.body.appendChild( dc.div);
+	}
+
+	clearScreen();
+	switch( gl.fe.ni){ case "mood" 	: drawMd()}
+}
+function drawSvg( a,c){	a.forEach( function(e){ c.appendChild(e)}); a =[]}
+function clearScreen(){
+	var e=Array.from(document.querySelectorAll('div, svg, rect, text, polygon, line, circle, ellipse'));
+ 	e.forEach( function(e){ e.remove()})}
+
+
+
+//gl.ws.send("md")
+
+
+
+
+
+function genericDraw( e){
+		if( gl.cL){	e.setAttribute( 'class',gl.cl)}
+		if( gl.pE){	e.setAttribute( 'pointer-events',gl.pe)}
+		if( gl.oP){	e.setAttribute( 'opacity',gl.op)}}
+function dr( x,y,w,h,c){	
+					gl.e=document.createElementNS( gl.ns,'rect'); genericDraw( gl.e);
+					gl.e.setAttribute( 'x',x);		gl.e.setAttribute( 'y',y);
+					gl.e.setAttribute( 'width',w);	gl.e.setAttribute( 'height',h);
+		if( c){		gl.e.setAttribute( 'fill',c)}
+					if( gl.useE){ gl.E.push( gl.e)}else { return gl.e}}
+function dt( f,x,y,fs,c,t){
+					gl.e=document.createElementNS( gl.ns,'text'); genericDraw( gl.e);
+					gl.e.setAttribute( 'x',x);		gl.e.setAttribute( 'y',y);
+					switch( f){
+						case "PR" : gl.e.setAttribute( 'font-family','ProFontWindows'); 	break;
+						case "AI" : gl.e.setAttribute( 'font-family','Aileron'); 			break;
+						case "SF" : gl.e.setAttribute( 'font-family','Steelfish Rg'); 		break;
+						case "CH" : gl.e.setAttribute( 'font-family','Chathura'); 			break;
+						case "SR" : gl.e.setAttribute( 'font-family','Strike Fighter');		break;
+						case "TR" : gl.e.setAttribute( 'font-family','times new roman'); 	break;
+									gl.e.setAttribute( 'font-family', f)}
+					gl.e.setAttribute( 'font-size',fs);
+					gl.e.setAttribute( 'fill',c);
+					gl.e.textContent =t;
+					if( gl.useE){ gl.E.push( gl.e)}else { return gl.e}}
+
+
+
+function ask(msg) { console.log(msg);
+    if (!gl.ws) { return false}
+    if (!msg) { return false}
+    gl.ws.send(msg); return false}
+
+
+function drCartesianPlane( svg,x,y,w,h){ gl.svg =svg; gl.x =x; gl.y =y; gl.w =w; gl.h =h; ask("md")}
+function drCartesianPlane2(){ gl.cl ="md";
+	var lw =gl.w /9; 	var lh =gl.h /9; 	var lx =0; 	var ly =0;
+	for( var y =0; y <9; y++){
+		for( var x =0; x <9; x++){
+			lx =gl.x+x*lw; 	ly =gl.y+y*lh;
+			dr( lx, ly, lw, lh, "#006688");
+			dt( "PR", lx, ly+15, 15, "#c8c8c8", "moi");
+		}
+	}
+	drawSvg( gl.E, gl.svg);
+}
+
+
+
+document.addEventListener('keydown', readKey);
+
+function readKey(e) { 	switch(e.key){ 	case 'q' : ask('q')}}
+function read(msg){ 	switch(msg){ 	case 'md': console.log("success"); drCartesianPlane2()}}
+
+
+
+function init(){
+
+	function initUiVars(){
+		gl.fesL =gl.fes.length}
+
+	function initWebSocket(){
+		if (window["WebSocket"]) {
+        	gl.ws = new WebSocket("ws://" + document.location.host + "/ws");
+        	gl.ws.onopen = function() { initDraw() }
+        	gl.ws.onclose = function () { ask('q'); console.log("Connection closed")};
+        	gl.ws.onmessage = function (evt) {
+        		var ps = evt.data.split('\n');
+        		for( var i =0; i <ps.length; i++){ read(ps[i])}}}
+		else { console.log("Your browser does not support WebSockets.")}}
+
+	initUiVars();
+	initWebSocket();
+}
+
+
+
+init();
+
+
+
+</script></head>
+<body>
+	<script>(function() { wi.load =true; initDraw(); })();</script>
+	<script type="text/javascript">var sc_project=863932;var sc_invisible=1;var sc_security="0ed0c038";</script>
+	<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+	<noscript><div class="statcounter"><a title="Web Analytics Made Easy - StatCounter" href="http://statcounter.com/" target="_blank"><img class="statcounter" src="//c.statcounter.com/863932/0/0ed0c038/1/" alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
+</body></html>
