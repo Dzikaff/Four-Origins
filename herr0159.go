@@ -511,7 +511,7 @@ func (wf Wf) arithWf() Awf { var a Awf
 	} else if wf[0] ==-1 { 	if wf[1] ==-2 { if wf[2] ==-3 { a =func(c int8, r int8)(int8,int8){	return 	-c, c-r} 	// 		phi -alpha psi -beta rho -gamma
 									} else 	if wf[2] == 4 { a =func(c int8, r int8)(int8,int8){	return 	-c, c-r} 	// 		...
 									} else 	if wf[2] == 5 { a =func(c int8, r int8)(int8,int8){	return 	-c, c-r}
-									} else 	{ 				a =func(c int8, r int8)(int8,int8){	return 	-c, c-r}}
+									} else 	{ 				a =func(c int8, r int8)(int8,int8){	return 	-c, c-r}} // hai herr trump
 					} else 	if wf[2] ==-2 { if wf[1] ==-3 { a =func(c int8, r int8)(int8,int8){	return c-r, -c}
 									} else 	if wf[1] == 4 { a =func(c int8, r int8)(int8,int8){	return c-r, -c}
 									} else 	if wf[1] == 5 { a =func(c int8, r int8)(int8,int8){	return c-r, -c}
